@@ -176,7 +176,7 @@ qplot(x = `Engine size`, y = `Horsepower`, data=df, #geom=c("point", "smooth"),
 
 # Boxplots of mpg by number of gears 
 # observations (points) are overlayed and jittered
-qplot(gear, mpg, data=mtcars, geom=c("boxplot", "jitter"), 
+qplot(as.factor(gear), mpg, data=mtcars, geom=c("boxplot", "jitter"), 
       fill=gear, main="Mileage by Gear Number",
       xlab="", ylab="Miles per Gallon")
 
