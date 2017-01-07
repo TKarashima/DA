@@ -20,7 +20,7 @@ df[57, "Number of cylinders"] <- NA
 
 ## Chevy Corvette and Mazda RX-7 have NA for Rear seat room; no rear seats
 df$`Rear seat room` <- as.numeric(df$`Rear seat room`)
-df[is.na(df$`Rear seat room`),] <- 0 ## setting rear seat room to zero
+df[is.na(df$`Rear seat room`), "Rear seat room"] <- 0 ## setting rear seat room to zero
 ## since they do not have rear seats, the value should be 0 as no seat room at all!
 ## since the data set is so small, I have to preserve these two obs
 

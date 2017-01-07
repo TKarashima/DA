@@ -14,10 +14,10 @@ options(dplyr.width = Inf)
 
 library(ggplot2) 
 
-df <- read_csv(file = "df.csv")
-
+#df <- read_csv(file = "df.csv")
+## see data from 1. EDA.R
 glimpse(df)
-rownames(df) <- paste(df$Manufacturer, df$Model)
+
 
 # create factors with value labels 
 # Run code from 1. EDA.R
@@ -77,8 +77,13 @@ qplot(x = 1:13, y = (fit$sdev^2) / sum(fit$sdev^2), geom = c("line", "point"),
 head(fit$scores[,1:2]) # the first two components account for 76% of the variance in the data
 
 
+biplot(fit, choices = c(1,2), pc.biplot = FALSE)
+biplot(fit, choices = c(1,2), pc.biplot = TRUE)
+# If true, use what Gabriel (1971) refers to as a "principal component biplot", with lambda = 1 
+# and observations scaled up by sqrt(n) and variables scaled down by sqrt(n). 
+# Then inner products between variables approximate covariances and distances between observations 
+# approximate Mahalanobis distance.
 
-biplot(fit, choices = c(1,2))
 
 biplot(fit, choices = c(2,3))
 
