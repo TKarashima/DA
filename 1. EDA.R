@@ -192,4 +192,21 @@ qplot(`Number of cylinders`, `City MPG`, data=df, geom=c("boxplot", "jitter"),
 
 
 
+qplot(x = `Manufacturer`, y = `Midrange Price`, data=df, geom=c("boxplot", "jitter"), 
+      fill=`Manufacturer`, main="Midrange Price by Manufacturer",
+      xlab="Manufacturer", ylab="Midrange Price")
 
+
+
+
+qplot(x = `Domestic`, y = `Midrange Price`, data=df, geom="boxplot", 
+      fill=`Manufacturer`, main="Midrange Price by Manufacturer",
+      xlab="Domestic & Manufacturer", ylab="Midrange Price")
+
+
+
+
+
+qplot(x = `Domestic`, y = `Midrange Price`, data=df, geom="boxplot", 
+      fill=`Domestic`, main="Midrange Price by Manufacturer",
+      xlab="Manufacturer", ylab="Midrange Price")

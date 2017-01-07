@@ -12,7 +12,7 @@ library(ggplot2)
 df <- read_csv(file = "df.csv")
 
 glimpse(df)
-
+rownames(df) <- paste(df$Manufacturer, df$Model)
 
 ## interesting fact: 1995 Mazda RX-7 doesn't have a conventional piston engine; It has two rotational things that act like a 6-cylinder engine.
 sum(df$`Number of cylinders` == ".")
@@ -50,12 +50,14 @@ numericdata <- sapply(df, is.numeric)
 numericdata
 df[, numericdata]
 
-fit <- factanal(na.omit(df[, numericdata]), 5, rotation="varimax")
+
+## attempted 5, then 4 loadings, but 3 seems sufficient!
+fit <- factanal(x = na.omit(df[, numericdata]), factors = 5, rotation="varimax", scores = "regression")
 print(fit, digits=2, cutoff=.3, sort=TRUE)
 # plot factor 1 by factor 2 
 loads12 <- fit$loadings[,1:2] 
 loads23 <- fit$loadings[,2:3] 
-loads34 <- fit$loadings[,3:4]
+loads31 <- fit$loadings[,c(3,1)]
 
 
 plot(loads12, type="p") # set up plot 
@@ -64,9 +66,22 @@ text(loads12,labels=colnames(df),cex=.7) # add variable names
 plot(loads23, type="p") # set up plot 
 text(loads23,labels=colnames(df),cex=.7) # add variable names
 
-plot(loads34, type="p") # set up plot 
-text(loads34,labels=colnames(df),cex=.7) # add variable names
+plot(loads31, type="p") # set up plot 
+text(loads31,labels=colnames(df),cex=.7) # add variable names
 
 
+
+
+
+autoplot(object = fit, data = na.omit(df[, numericdata]))
+
+
+
+qplot(x = `Factor1`, y = `Factor3`, data = data.frame(fit$scores), 
+      main = "Factors")
+
+
+qplot(x = `Factor1`, y = `Factor2`, data = data.frame(fit$scores), 
+      main = "Factors")
 
 
