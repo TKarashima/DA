@@ -23,6 +23,8 @@ df$`Rear seat room` <- as.numeric(df$`Rear seat room`)
 df[is.na(df$`Rear seat room`),]
 
 # create factors with value labels 
+df$Manufacturer <- as.factor(df$Manufacturer)
+
 df$`Number of cylinders` <- factor(df$`Number of cylinders`, levels=c("3","4","5","6","8"),
                       labels=sapply(c("3","4","5","6","8"), function(x) paste(x, "cylinders"))) 
 
