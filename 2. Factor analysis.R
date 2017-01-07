@@ -94,3 +94,20 @@ qplot(x = `Factor1`, y = `Factor2`, data = data.frame(fit$scores),
       main = "Factors")
 
 
+
+
+
+
+
+
+# Pricipal Components Analysis
+# entering raw data and extracting PCs 
+# from the correlation matrix 
+fit <- princomp(x = na.omit(df[,numericdata]), cor=TRUE)
+summary(fit) # print variance accounted for 
+loadings(fit) # pc loadings 
+plot(fit,type="lines") # scree plot 
+fit$scores # the principal components
+biplot(fit, choices = c(2,3))
+
+

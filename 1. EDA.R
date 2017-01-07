@@ -232,3 +232,11 @@ qplot(x = `Midrange Price`, y = `City MPG`, data=df, shape=`Domestic`,
 
 
 
+qplot(x = `Domestic`, y = `Weight`, data=df, geom=c("boxplot", "jitter"), 
+      fill=`Manufacturer`, main="Weight by Manufacturer",
+      xlab="Domestic?", ylab="Weight")
+
+
+qplot(x = `Domestic`, y = `Weight`, data=df, geom=c("boxplot", "jitter"), 
+      fill=`Domestic`, main="Weight by Manufacturer",
+      xlab="Domestic?", ylab="Weight")
