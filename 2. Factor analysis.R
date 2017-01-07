@@ -49,13 +49,14 @@ df$Domestic <- factor(df$Domestic, levels = c(0, 1),
 # entering raw data and extracting 3 factors, 
 # with varimax rotation 
 numericdata <- sapply(df, is.numeric)
-numericdata
+numericdata[c(4,6)] <- FALSE ## omitting Minimum Price and Maximum Price
 df[, numericdata]
 
 
 library(reshape2)
-qplot(x=Var1, y=Var2, data=melt(cor(df[,numericdata])), fill=value, geom="tile",
-      xlab = "", ylab = "", main = "Correlation matrix of numeric data (spearman)")
+correlations <- cor(na.omit(df[,numericdata]), method = "spearman")
+qplot(x=Var1, y=Var2, data=melt(correlations), fill=value, geom="tile",
+      xlab = "", ylab = "", main = "Correlation matrix of numeric data (spearman)") + theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
 
 
