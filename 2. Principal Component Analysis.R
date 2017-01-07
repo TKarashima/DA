@@ -1,6 +1,9 @@
-## factor analysis
+## principal component analysis
 ## principal components v factor analysis
 # http://support.minitab.com/en-us/minitab/17/topic-library/modeling-statistics/multivariate/principal-components-and-factor-analysis/differences-between-pca-and-factor-analysis/
+
+# for review:
+# http://www.ats.ucla.edu/stat/sas/output/principal_components.htm
 
 setwd(dir = "~/Desktop/Google Drive/SDSU/DA-Exam-2017/")
 
@@ -32,6 +35,13 @@ library(reshape2)
 correlations <- cor(na.omit(df[,numericdata]), method = "spearman")
 qplot(x=Var1, y=Var2, data=melt(correlations), fill=value, geom="tile",
       xlab = "", ylab = "", main = "Correlation matrix of numeric data (spearman)") + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+# If any of the correlations are too high (say above .9), you may need to remove one of the variables from 
+# the analysis, as the two variables seem to be measuring the same thing.  Another alternative would be to 
+# combine the variables in some way (perhaps by taking the average).  If the correlations are too low, say 
+# below .1, then one or more of the variables might load only onto one principal component (in other words,
+# make its own principal component).  This is not helpful, as the whole point of the analysis is to 
+# reduce the number of items (variables).
 
 
 
