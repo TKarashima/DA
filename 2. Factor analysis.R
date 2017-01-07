@@ -1,4 +1,6 @@
 ## factor analysis
+## principal components v factor analysis
+# http://support.minitab.com/en-us/minitab/17/topic-library/modeling-statistics/multivariate/principal-components-and-factor-analysis/differences-between-pca-and-factor-analysis/
 
 setwd(dir = "~/Desktop/Google Drive/SDSU/DA-Exam-2017/")
 
@@ -49,6 +51,12 @@ df$Domestic <- factor(df$Domestic, levels = c(0, 1),
 numericdata <- sapply(df, is.numeric)
 numericdata
 df[, numericdata]
+
+
+library(reshape2)
+qplot(x=Var1, y=Var2, data=melt(cor(df[,numericdata])), fill=value, geom="tile",
+      xlab = "", ylab = "", main = "Correlation matrix of numeric data (spearman)")
+
 
 
 ## attempted 5, then 4 loadings, but 3 seems sufficient!

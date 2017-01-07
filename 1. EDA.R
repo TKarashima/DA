@@ -211,4 +211,24 @@ qplot(x = `Domestic`, y = `Midrange Price`, data=df, geom="boxplot",
 
 qplot(x = `Domestic`, y = `Midrange Price`, data=df, geom="boxplot", 
       fill=`Domestic`, main="Midrange Price by Manufacturer",
-      xlab="Manufacturer", ylab="Midrange Price")
+      xlab="Manufacturer", ylab="Midrange Price")
+
+
+qplot(x = `Domestic`, y = `City MPG`, data=df, geom=c("boxplot", "jitter"), 
+      fill=`Domestic`, main="City MPG by Manufacturer",
+      xlab="Domestic?", ylab="Midrange Price")
+
+
+
+qplot(x = `Midrange Price`, y = `City MPG`, data=df, shape=`Manual transmission available`, 
+      color = `Manual transmission available`, size=I(3),
+      xlab="Price", ylab="Miles per Gallon", main = "Midrange Price v City MPG by Transmission Type") 
+
+
+qplot(x = `Midrange Price`, y = `City MPG`, data=df, shape=`Domestic`, 
+      color = `Domestic`, size=I(3),
+      xlab="Price", ylab="City MPG", main = "Midrange Price v City MPG by Transmission Type") 
+
+
+
+
