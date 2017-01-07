@@ -1,3 +1,6 @@
+## this will be removed from the analysis....use it just to "look around";
+
+
 ## factor analysis
 ## principal components v factor analysis
 # http://support.minitab.com/en-us/minitab/17/topic-library/modeling-statistics/multivariate/principal-components-and-factor-analysis/differences-between-pca-and-factor-analysis/
@@ -22,7 +25,7 @@ df[57, "Number of cylinders"] <- NA
 
 ## Chevy Corvette and Mazda RX-7 have NA for Rear seat room; no rear seats
 df$`Rear seat room` <- as.numeric(df$`Rear seat room`)
-df[is.na(df$`Rear seat room`),]
+df[is.na(df$`Rear seat room`), "Rear seat room"]
 
 # create factors with value labels 
 df$`Number of cylinders` <- factor(df$`Number of cylinders`, levels=c("3","4","5","6","8"),
