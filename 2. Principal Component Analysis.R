@@ -48,11 +48,42 @@ loadings(fit) # pc loadings
 
 plot(fit,type="lines", main = "scree plot") # scree plot 
 qplot(x = 1:15, y = fit$sdev^2, geom = c("line", "point"), 
-      main = "scree plot", xlab = "Principal components", ylab = "Variance")
+      main = "scree plot", xlab = "components", ylab = "Variance")
 
 
-head(fit$scores[,1:3]) # the principal components
+head(fit$scores[,1:2]) # the first two components account for 76% of the variance in the data
+
+
+
+biplot(fit, choices = c(1,2))
 
 biplot(fit, choices = c(2,3))
+
+
+
+
+
+
+components <- data.frame(fit$scores[,1:2])
+rnames <- apply(na.omit(df)[, c("Manufacturer" , "Model")], 1, function(x) paste(x[1], x[2]))
+rownames(components) <- rnames
+
+library(mclust)
+mfit <- Mclust(data = components)
+  
+plot(mfit)  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
 
 
