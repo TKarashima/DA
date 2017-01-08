@@ -1,3 +1,6 @@
-
-
+*.log
+*.gz
+*.tex
 *.pdf
+*.Rnw
+*.Rmd
